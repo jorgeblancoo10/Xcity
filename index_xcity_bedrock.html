@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <title>Agregar servidor XCity</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(circle at top, #263449 0, #111827 45%, #090d15 100%);
+      color: #fff;
+      padding: 24px;
+    }
+    .card {
+      width: min(440px, 100%);
+      background: rgba(17, 24, 39, .92);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.45);
+      text-align: center;
+    }
+    .cube {
+      font-size: 54px;
+      margin-bottom: 8px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
+      letter-spacing: -.5px;
+    }
+    .sub {
+      color: #cbd5e1;
+      margin: 0 0 24px;
+      line-height: 1.5;
+    }
+    .server {
+      background: #0b1220;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 18px;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      word-break: break-all;
+    }
+    .primary, .secondary {
+      width: 100%;
+      border: 0;
+      border-radius: 14px;
+      padding: 15px 18px;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+    }
+    .primary {
+      background: #22c55e;
+      color: #07140b;
+      margin-bottom: 12px;
+    }
+    .primary:active { transform: scale(.99); }
+    .secondary {
+      background: #263449;
+      color: white;
+    }
+    .note {
+      color: #94a3b8;
+      font-size: 13px;
+      line-height: 1.45;
+      margin: 18px 0 0;
+    }
+    #status {
+      min-height: 20px;
+      color: #86efac;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="cube">⛏️</div>
+    <h1>XCity</h1>
+    <p class="sub">Entra desde Minecraft Bedrock con un solo toque.</p>
+
+    <div class="server">equis.modredy.gg:25592</div>
+
+    <a class="primary"
+       href="minecraft://?addExternalServer=XCity|equis.modredy.gg:25592">
+      🎮 Agregar servidor a Minecraft
+    </a>
+
+    <button class="secondary" type="button" onclick="copiarServidor()">
+      Copiar IP y puerto
+    </button>
+
+    <div id="status"></div>
+
+    <p class="note">
+      Si Minecraft no se abre automáticamente, copia la dirección y agrégala
+      manualmente en Servidores → Agregar servidor.
+    </p>
+  </main>
+
+  <script>
+    async function copiarServidor() {
+      const texto = "equis.modredy.gg:25592";
+      const estado = document.getElementById("status");
+      try {
+        await navigator.clipboard.writeText(texto);
+        estado.textContent = "IP y puerto copiados.";
+      } catch {
+        estado.textContent = texto;
+      }
+    }
+  </script>
+</body>
+</html>
